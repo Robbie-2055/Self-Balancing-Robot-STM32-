@@ -4,6 +4,13 @@
 ![Platform](https://img.shields.io/badge/platform-STM32-blue)
 ![Language](https://img.shields.io/badge/language-C-green)
 
+
+
+https://github.com/user-attachments/assets/10e408e8-b089-47e7-b8d0-b8040702226a
+
+<img width="391" height="320" alt="Screenshot 2026-05-20 002936" src="https://github.com/user-attachments/assets/317f6cb7-f398-41d1-9ba0-9ab168342af6" />
+
+
 A two-wheeled self-balancing inverted pendulum robot built using an **STM32** microcontroller. The robot utilizes an **MPU6050** Inertial Measurement Unit (IMU) to sense its orientation, processes this data through a PID loop, and drives two **DC shaft motors** via an **L298N** motor driver to maintain perfect equilibrium.
 
 This project is split into two distinct execution phases: prototyping with off-the-shelf modules and migrating to a custom-designed Printed Circuit Board (PCB).
