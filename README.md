@@ -6,10 +6,6 @@
 
 
 
-https://github.com/user-attachments/assets/10e408e8-b089-47e7-b8d0-b8040702226a
-
-<img width="391" height="320" alt="Screenshot 2026-05-20 002936" src="https://github.com/user-attachments/assets/317f6cb7-f398-41d1-9ba0-9ab168342af6" />
-
 
 A two-wheeled self-balancing inverted pendulum robot built using an **STM32** microcontroller. The robot utilizes an **MPU6050** Inertial Measurement Unit (IMU) to sense its orientation, processes this data through a PID loop, and drives two **DC shaft motors** via an **L298N** motor driver to maintain perfect equilibrium.
 
@@ -51,7 +47,7 @@ To reduce wiring complexity, eliminate inductive noise, and minimize the physica
 
 The firmware relies on a real-time hardware feedback loop to maintain stability:
 
-```text
+
   +-------------+       I2C       +-------------------+
   |   MPU6050   | --------------->|   STM32 (MCU)     |
   | (IMU Sensor)|                 |                   |
@@ -66,5 +62,14 @@ The firmware relies on a real-time hardware feedback loop to maintain stability:
   +-------------+
   | Shaft Motors|
   +-------------+
+
+
+# Current developments
+
+https://github.com/user-attachments/assets/f44257d5-607a-4bce-967d-3fb6638ffd92
+
+<img width="391" height="320" alt="Screenshot 2026-05-20 002936" src="https://github.com/user-attachments/assets/e6a16637-e4f3-43ed-bfb4-12bba073ef04" />
+
+https://github.com/user-attachments/assets/f6ba3c8e-9986-4cd3-9cd2-4a73ed5fd0c9
 
 
