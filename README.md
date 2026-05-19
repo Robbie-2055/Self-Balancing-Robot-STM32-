@@ -60,15 +60,4 @@ The firmware relies on a real-time hardware feedback loop to maintain stability:
   | Shaft Motors|
   +-------------+
 
-Sensor Fusion: Merges raw accelerometer and gyroscope data from the MPU6050
-               using a Kalman Filter to calculate a stable, precise tilt angle.
 
-PID Control: Compares the actual tilt angle against the target upright angle
-             (setpoint) to calculate corrections using three terms.
-
-P (Kp): Corrects based on immediate tilt severity.
-I (Ki): Corrects long-term drifting or leaning.
-D (Kd): Dampens rapid movements to prevent over-correcting.
-
-Motor Actuation: Converts the combined PID output into specific PWM speed
-                 signals and direction commands sent directly to the L298N driver.
