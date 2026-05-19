@@ -36,7 +36,6 @@ This project is split into two distinct execution phases: prototyping with off-t
 ### Phase 2: Custom Board Upgrades
 To reduce wiring complexity, eliminate inductive noise, and minimize the physical footprint:
 * **Integrated MCU:** STM32 chip placed directly on-board with dedicated decoupling capacitors and an external crystal oscillator.
-* **Dedicated Power Stage:** Replacing the bulky L298N module with an efficient, surface-mount motor driver IC (like the **TB6612FNG** or **DRV8833**) to eliminate massive heat sinks.
 * **On-board Sensors:** Hardwired MPU6050 footprint to prevent I2C signal degradation over jumper wires.
 
 ---
@@ -60,4 +59,12 @@ The firmware relies on a real-time hardware feedback loop to maintain stability:
   +-------------+
   | Shaft Motors|
   +-------------+
-Sensor Fusion: Reads acceleration and angular velocity from the MPU6050. Uses a library with a Kalman Filter to calculate a clean angle.PID Control Loop: Compares the current angle against the target upright angle (setpoint). The error is passed to the PID algorithm:Proportional ($K_p$): Corrects based on current tilt severity.Integral ($K_i$): Corrects cumulative errors (prevents steady-state leaning).Derivative ($K_d$): Dampens the movement to prevent wild over-corrections.Motor Actuation: The PID output maps directly into a PWM duty cycle and direction pin outputs sent to the L298N.
+
+Sensor Fusion: Merges raw accelerometer and gyroscope data from the MPU6050 using a Kalman Filter to calculate a stable, precise tilt angle.
+
+PID Control: Compares the actual tilt angle against the target upright angle (setpoint) to calculate corrections using three terms:
+*P ($K_p$): Corrects based on immediate tilt severity.
+*I ($K_i$): Corrects long-term drifting or leaning.
+*D ($K_d$): Dampens rapid movements to prevent over-correcting.
+
+Motor Actuation: Converts the combined PID output into specific PWM speed signals and direction commands sent directly to the L298N driver.
