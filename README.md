@@ -4,7 +4,7 @@
 ![Platform](https://img.shields.io/badge/platform-STM32-blue)
 ![Language](https://img.shields.io/badge/language-C-green)
 
-A two-wheeled self-balancing inverted pendulum robot built using an **STM32** microcontroller. The robot utilizes an **MPU6050** Inertial Measurement Unit (IMU) to sense its orientation, processes this data through a PID loop, and drives high-torque **DC shaft motors** via an **L298N** motor driver to maintain perfect equilibrium.
+A two-wheeled self-balancing inverted pendulum robot built using an **STM32** microcontroller. The robot utilizes an **MPU6050** Inertial Measurement Unit (IMU) to sense its orientation, processes this data through a PID loop, and drives two **DC shaft motors** via an **L298N** motor driver to maintain perfect equilibrium.
 
 This project is split into two distinct execution phases: prototyping with off-the-shelf modules and migrating to a custom-designed Printed Circuit Board (PCB).
 
@@ -19,8 +19,8 @@ This project is split into two distinct execution phases: prototyping with off-t
   - Tune the PID parameters ($K_p$, $K_i$, $K_d$).
   - Implement encoder feedback for position tracking and drift prevention.
 - [ ] **Phase 3: Custom PCB Layout**
-  - Design a compact, integrated schematic in KiCad/Altium.
-  - Replace L298N with a highly efficient, surface-mount motor driver IC.
+  - Design a compact, integrated schematic in KiCad
+  
 
 ---
 
@@ -49,9 +49,8 @@ The firmware relies on a real-time hardware feedback loop to maintain stability:
   +-------------+       I2C       +-------------------+
   |   MPU6050   | --------------->|   STM32 (MCU)     |
   | (IMU Sensor)|                 |                   |
-  +-------------+                 | 1. Complementary/ |
-                                  |    Kalman Filter  |
-                                  | 2. PID Control    |
+  +-------------+                 |                   |
+                                  | 1.  PIID Control    |
   +-------------+      PWM/Dir    |    Calculation    |
   |    L298N    | <---------------|                   |
   | (Driver IC) |                 +-------------------+
@@ -61,4 +60,4 @@ The firmware relies on a real-time hardware feedback loop to maintain stability:
   +-------------+
   | Shaft Motors|
   +-------------+
-Sensor Fusion: Reads acceleration and angular velocity from the MPU6050. Uses a Complementary Filter to calculate a clean, drift-free pitch angle.PID Control Loop: Compares the current angle against the target upright angle (setpoint). The error is passed to the PID algorithm:Proportional ($K_p$): Corrects based on current tilt severity.Integral ($K_i$): Corrects cumulative errors (prevents steady-state leaning).Derivative ($K_d$): Dampens the movement to prevent wild over-corrections.Motor Actuation: The PID output maps directly into a PWM duty cycle and direction pin outputs sent to the L298N.
+Sensor Fusion: Reads acceleration and angular velocity from the MPU6050. Uses a library with a Kalman Filter to calculate a clean angle.PID Control Loop: Compares the current angle against the target upright angle (setpoint). The error is passed to the PID algorithm:Proportional ($K_p$): Corrects based on current tilt severity.Integral ($K_i$): Corrects cumulative errors (prevents steady-state leaning).Derivative ($K_d$): Dampens the movement to prevent wild over-corrections.Motor Actuation: The PID output maps directly into a PWM duty cycle and direction pin outputs sent to the L298N.
