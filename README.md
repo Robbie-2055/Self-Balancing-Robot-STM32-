@@ -43,28 +43,8 @@ To reduce wiring complexity, eliminate inductive noise, and minimize the physica
 
 ---
 
-## 💻 System Topology
 
-The firmware relies on a real-time hardware feedback loop to maintain stability:
-
-
-  +-------------+       I2C       +-------------------+
-  |   MPU6050   | --------------->|   STM32 (MCU)     |
-  | (IMU Sensor)|                 |                   |
-  +-------------+                 |                   |
-                                  | 1.  PIID Control    |
-  +-------------+      PWM/Dir    |    Calculation    |
-  |    L298N    | <---------------|                   |
-  | (Driver IC) |                 +-------------------+
-  +-------------+
-         |
-         v
-  +-------------+
-  | Shaft Motors|
-  +-------------+
-
-
-# Current developments
+## Current developments
 
 https://github.com/user-attachments/assets/f44257d5-607a-4bce-967d-3fb6638ffd92
 
