@@ -40,6 +40,7 @@ This project is split into two distinct execution phases: prototyping with off-t
 To reduce wiring complexity, eliminate inductive noise, and minimize the physical footprint:
 * **Integrated MCU:** STM32 chip placed directly on-board with dedicated decoupling capacitors and an external crystal oscillator.
 * **On-board Sensors:** Hardwired MPU6050 footprint to prevent I2C signal degradation over jumper wires.
+* **Motor Driver:** The L298N Motor driver together with all support components placed directly on the custom board
 
 ---
 
