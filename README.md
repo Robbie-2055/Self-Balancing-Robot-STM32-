@@ -20,7 +20,6 @@ This project is split into two distinct execution phases: prototyping with off-t
   - Implement basic I2C communication and PWM motor control.
 - [ ] **Phase 2: Firmware Optimization**
   - Tune the PID parameters ($K_p$, $K_i$, $K_d$).
-  - Implement encoder feedback for position tracking and drift prevention.
 - [ ] **Phase 3: Custom PCB Layout**
   - Design a compact, integrated schematic in KiCad
   
